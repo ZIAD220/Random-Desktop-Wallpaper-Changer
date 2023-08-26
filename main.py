@@ -10,7 +10,7 @@ page = requests.get("https://wallpaperswide.com/search.html?q=assassins%20creed"
 
 
 # Get random picture.
-def getRandomPage(page):
+def get_random_page(page):
     src = page.content
     soup = bs4.BeautifulSoup(src, 'lxml')
 
@@ -23,10 +23,12 @@ def getRandomPage(page):
     soup = bs4.BeautifulSoup(src, 'lxml')
     return soup
 
-page = getRandomPage(page)
+
+page = get_random_page(page)
+
 
 # Get random wallpaper.
-def getRandomWallpaper(page):
+def get_random_wallpaper(page):
     wallpapers = page.find_all('li', {'class': 'wall'})
     print(wallpapers)
     random_index = random.randint(0, len(wallpapers) - 1)
@@ -34,10 +36,12 @@ def getRandomWallpaper(page):
     print(random_wallpaper)
     return random_wallpaper
 
-page = getRandomWallpaper(page)
+
+page = get_random_wallpaper(page)
+
 
 # Download wallpaper
-def downloadWallpaper(url):
+def download_wallpaper(url):
     page = requests.get(url)
     src = page.content
     soup = bs4.BeautifulSoup(src, 'lxml')
@@ -54,12 +58,14 @@ def downloadWallpaper(url):
     with open("image.jpg", "wb") as f:
         f.write(image.content)
 
-page = downloadWallpaper(page)
+
+download_wallpaper(page)
+
 
 # Setting the downloaded image to be the desktop wallpaper.
-def setWallpaper():
+def set_wallpaper():
     SPI_SETDESKWALLPAPER = 20
     ctypes.windll.user32.SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0, "E:\Codes\Web Scraping\image.jpg", 3)
     return
 
-setWallpaper()
+set_wallpaper()

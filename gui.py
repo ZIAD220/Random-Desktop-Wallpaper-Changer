@@ -12,13 +12,13 @@ class GUI:
         self.topicLabel.pack(padx=20, pady=20)
 
         self.topicBox = tk.Text(self.root, height=1, font=('Arial', 16))
-        self.topicBox.bind("<KeyPress>", self.enterKey)
+        self.topicBox.bind("<KeyPress>", self.enter_key)
         self.topicBox.pack(padx=10, pady=20)
 
         self.button = tk.Button(self.root,
                                 text="Get Wallpaper!",
                                 font=('Arial', 20),
-                                command=self.handleInput,
+                                command=self.handle_input,
                                 background="#4285F4")
         self.button.pack()
 
@@ -28,12 +28,13 @@ class GUI:
 
         self.root.mainloop()
 
-    def handleInput(self):
+    def handle_input(self):
         topic = self.topicBox.get("1.0", tk.END)
         print(topic)
 
-    def enterKey(self, event):
+    def enter_key(self, event):
         if event.keysym == "Return":
-            self.handleInput()
+            self.handle_input()
+
 
 GUI()
