@@ -2,7 +2,6 @@ import random
 import ctypes
 import requests
 import bs4
-import csv
 
 # Here we need to handle input.
 
