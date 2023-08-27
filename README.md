@@ -2,7 +2,7 @@
 
 ## Description
 This is a simple python program where you can get a random desktop wallpaper. This program offers an extensive collection of stunning HD wallpapers. You also have the freedom to get wallpapers from various categories, like nature, video games, landscapes, animals, abstract art, and more by typing some search words in the search box, which gives you a random wallpaper from the words you've written. 
-The program is optimized to run seamlessly without worrying about slowdowns or performance issues. It's simple, fast and easy to use :).
+The program is optimized to run seamlessly without worrying about slowdowns or performance issues. It's simple, fast and easy to use ;).
 
 ## How it works?
 Tiil now, the program only uses https://wallpaperswide.com/ to get the wallpaper. It's a great website and contains a lot of HD wallpapers from different categories.
@@ -27,3 +27,4 @@ The libraries used are:
 - Os.path (To get the path of the current directory)
 
 ## Sample
+![Loading a sample gif...](sample.gif)
