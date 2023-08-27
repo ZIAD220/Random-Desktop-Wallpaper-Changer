@@ -1,4 +1,5 @@
 import tkinter as tk
+from time import sleep
 
 class GUI:
     def __init__(self):
@@ -21,6 +22,9 @@ class GUI:
                                 background="#4285F4")
         self.button.pack()
 
+        self.status_label = tk.Label(self.root, text="Please wait.", font=('Arial', 16), bg='black', fg='white')
+        self.status_label.pack_forget()
+
         self.githubLabel = tk.Label(self.root, text="github.com/ZIAD220", font=('Arial', 11), bg='black', fg='white')
         self.githubLabel.pack(side='bottom')
         self.githubLabel.pack(side='right')
@@ -29,8 +33,19 @@ class GUI:
 
     def handle_input(self):
         topic = self.topicBox.get("1.0", tk.END)
+
+        if topic == "":
+            return
+        self.status_label.config(text="Please wait.")
+        self.status_label.pack(padx=20, pady=20)
         from controller import flow
-        flow(topic)
+        found = flow(topic)
+        if not found:
+            self.status_label.config(text="No Results found.", fg="red")
+            self.status_label.pack(padx=20, pady=20)
+        else:
+            self.status_label.config(text="Done successfully.", fg="#00F700")
+            self.status_label.pack(padx=20, pady=20)
 
     def enter_key(self, event):
         if event.keysym == "Return":

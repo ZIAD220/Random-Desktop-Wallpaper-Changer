@@ -12,9 +12,12 @@ def flow(query):
 
     page = requests.get(f"https://wallpaperswide.com/search.html?q={new_query}")
     page = get_random_page(page, query)
+    if page is None:
+        return False
     page = get_random_wallpaper(page)
     download_wallpaper(page)
     set_wallpaper()
+    return True
 
 # Get random picture.
 def get_random_page(page, query):
@@ -22,7 +25,11 @@ def get_random_page(page, query):
     soup = bs4.BeautifulSoup(src, 'lxml')
 
     # Getting number of pages available.
-    max_page = int(soup.find('div', {'class': 'pagination'}).contents[4].text)
+    pagination = soup.find('div', {'class': 'pagination'})
+    if pagination is None:
+        return None
+
+    max_page = int(pagination.contents[len(pagination) - 2].text)
 
     random_page = random.randint(1, max_page)
     page = requests.get(f'https://wallpaperswide.com/search/page/{random_page}?q={query}')
