@@ -3,6 +3,7 @@ import random
 import ctypes
 import requests
 import bs4
+from screeninfo import get_monitors
 
 
 def flow(query):
@@ -60,9 +61,12 @@ def download_wallpaper(url):
 
     resolutions = soup.findAll('a', {'target': '_self'})
 
+    # Getting screen resolution of the current monitor (like 1920x1080).
+    screen_resolution = str(get_monitors()[0].width) + "x" + str(get_monitors()[0].height)
+
     image_link = 'https://wallpaperswide.com'
     for a in resolutions:
-        if a['href'].find('1920x1080') > -1:
+        if a['href'].find(screen_resolution) > -1:
             image_link += a['href']
 
     image = requests.get(image_link)
