@@ -27,4 +27,5 @@ The libraries used are:
 - Os.path (To get the path of the current directory)
 
 ## Sample
+Here is a sample GIF photo. (***NOTE: If you don't see it, it may be still loading. Please wait.***)
 ![Loading a sample gif...](sample.gif)
